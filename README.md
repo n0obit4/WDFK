@@ -1,8 +1,6 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/n0obit4/wdfk"><img src="logo.png" alt="WDFK Logo" border="0" width="180"></a>
-  <br>
-  <br>
 </h1>
 
 <p align="center">
