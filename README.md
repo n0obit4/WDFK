@@ -2,13 +2,12 @@
   <br>
   <a href="https://github.com/n0obit4/wdfk"><img src="logo.png" alt="WDFK Logo" border="0" width="180"></a>
   <br>
-  WDFK
   <br>
 </h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Release-v1.0-Red.svg">
-  <img src="https://img.shields.io/badge/License-APACHE%202.0-brightyellow.svg">
+  <img src="https://img.shields.io/badge/License-GPL%20v3.0-brightyellow.svg">
   <img src="https://img.shields.io/badge/Platform-Linux-yellow.svg">
 </p>
 
