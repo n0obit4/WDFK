@@ -61,7 +61,7 @@ EG      LE.        E##D.          E#t       ,;
 Made by SN0KI and N0OBIT4
  Choose an option
 
- 1-Default Password, Internet Movil * XXXX and Internet Movil * XXXX.
+ 1-Default Password, Internet Movil * XXXX.
  2-Wireless Deauth.
  3-MAC spoof.
 
