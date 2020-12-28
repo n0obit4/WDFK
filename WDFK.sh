@@ -56,7 +56,7 @@ function menu(){
 	echo -e "$Cafe"" Choose an option""$transparent"
 	echo ""
 
-	echo -e "$blue" "1-Default Password, Internet Movil Orange XXXX and Internet Movil Claro XXXX."
+	echo -e "$blue" "1-Default Password, Internet Movil * XXXX."
 	echo -e "$blue" "2-Wireless Deauth."
 	echo -e "$blue" "3-MAC spoof."
 	echo ""
