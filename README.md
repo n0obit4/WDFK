@@ -62,7 +62,7 @@ Made by SN0KI and N0OBIT4
  Choose an option
 
  1-Default Password, Internet Movil Orange XXXX and Internet Movil Claro XXXX.
- 2-Wireless DDOS.
+ 2-Wireless Deauth.
  3-MAC spoof.
 
 Exit(E)
