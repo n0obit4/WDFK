@@ -57,7 +57,7 @@ function menu(){
 	echo ""
 
 	echo -e "$blue" "1-Default Password, Internet Movil Orange XXXX and Internet Movil Claro XXXX."
-	echo -e "$blue" "2-Wireless DDOS."
+	echo -e "$blue" "2-Wireless Deauth."
 	echo -e "$blue" "3-MAC spoof."
 	echo ""
 	echo -e "$red""Exit (E)"
