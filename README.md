@@ -13,6 +13,10 @@
 
 WDFK is a tool that contains some wifi attack with differents thematics, the first option did was the function that motivated me to do this program, later i was developed the other functions.
 
+## Release v1.1
+
+  - improved performance. 
+  
 ## Requeriments
 
 If you want install the REQUERIMENTS execute **install_requeriments.sh** or install the following programs manually.
