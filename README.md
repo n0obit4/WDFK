@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/n0obit4/WDFK/releases/tag/v1.0"><img src="https://img.shields.io/badge/Release-v1.0-Red.svg"></a>
+  <a href="https://github.com/n0obit4/WDFK/releases/tag/v1.1"><img src="https://img.shields.io/badge/Release-v1.1-Red.svg"></a>
   <img src="https://img.shields.io/badge/License-GPL%20v3.0-brightyellow.svg">
   <img src="https://img.shields.io/badge/Platform-Linux-yellow.svg">
 </p>
@@ -13,6 +13,10 @@
 
 WDFK is a tool that contains some wifi attack with differents thematics, the first option did was the function that motivated me to do this program, later i was developed the other functions.
 
+## Release v1.1
+
+  - improved performance. 
+  
 ## Requeriments
 
 If you want install the REQUERIMENTS execute **install_requeriments.sh** or install the following programs manually.
