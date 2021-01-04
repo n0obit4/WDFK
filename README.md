@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/n0obit4/WDFK/releases/tag/v1.0"><img src="https://img.shields.io/badge/Release-v1.0-Red.svg"></a>
+  <a href="https://github.com/n0obit4/WDFK/releases/tag/v1.1"><img src="https://img.shields.io/badge/Release-v1.1-Red.svg"></a>
   <img src="https://img.shields.io/badge/License-GPL%20v3.0-brightyellow.svg">
   <img src="https://img.shields.io/badge/Platform-Linux-yellow.svg">
 </p>
