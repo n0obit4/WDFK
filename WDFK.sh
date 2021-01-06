@@ -30,6 +30,10 @@ if [[ $EUID > 0 ]]; then # we can compare directly with this syntax.
 fi
 clear
 
+function banner(){
+  echo 'IF9fICAgX18gIF9fXyAgX19fX19fX18gICAgX19fX19fXyAgX18gICBfX18gIAp8IiAgfC8gIFx8ICAifHwiICAgICAgIlwgIC8iICAgICAifHwvInwgLyAgIikgCnwnICAvICAgIFw6ICB8KC4gIF9fXyAgOikoOiBfX19fX18pKDogfC8gICAvICAKfDogLycgICAgICAgIHx8OiBcICAgKSB8fCBcLyAgICB8ICB8ICAgIF9fLyAgIAogXC8vICAvXCcgICAgfCh8IChfX19cIHx8IC8vIF9fXykgICgvLyBfICBcICAgCiAvICAgLyAgXFwgICB8fDogICAgICAgOikoOiAgKCAgICAgfDogfCBcICBcICAKfF9fXy8gICAgXF9fX3woX19fX19fX18vICBcX18vICAgICAoX198ICBcX18p'|base64 -d
+}
+
 function menu(){
 
 	echo
